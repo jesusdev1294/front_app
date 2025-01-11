@@ -4,6 +4,8 @@ const SearchRut = () => {
   const [rut, setRut] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
+  const url = 'https://5ejrdzjpsd.execute-api.us-east-1.amazonaws.com/dev/lof'
+  const localhost = 'http://localhost:8000/lof';
 
   const handleSearch = async () => {
     if (!rut) {
@@ -13,7 +15,7 @@ const SearchRut = () => {
     setError("");
 
     try {
-      const response = await fetch(`http://localhost:8000/lof/${rut}`);
+      const response = await fetch(`${localhost}/${rut}`);
       console.log(response);
       if (!response.ok) {
         throw new Error("No se pudo obtener la información.");
