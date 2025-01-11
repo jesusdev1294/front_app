@@ -18,7 +18,11 @@ const SearchRut = () => {
         throw new Error("No se pudo obtener la información.");
       }
       const result = await response.json();
-      setData(result.results); // Guardamos los datos dentro de 'results'
+      if (result.results && result.results.length === 0) {
+        setData([]);  // Si no hay resultados, se establece como un array vacío
+      } else {
+        setData(result.results);  // Guardamos los datos dentro de 'results'
+      }
     } catch (err) {
       setError("Error al buscar el RUT. Por favor, verifica la API.");
       setData(null);
@@ -76,7 +80,9 @@ const SearchRut = () => {
         Reset
       </button>
       {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-      {data && (
+      {data === null ? null : data.length === 0 ? (
+        <p style={{ color: "orange", marginTop: "10px" }}>No se encontraron resultados para este RUT.</p>
+      ) : (
         <table
           style={{
             width: "100%",
