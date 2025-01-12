@@ -52,26 +52,30 @@ const SearchRut = () => {
         <button className="reset-button" onClick={handleReset}>Limpiar</button>
       </div>
       {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-      {data === null ? null : data.length === 0 ? (
-        <p style={{ color: "orange", marginTop: "10px" }}>No se encontraron resultados para este RUT.</p>
-      ) : (
-        <div className="table-container">
-          <table>
-            <thead>
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th className="ano-comercial">Año Comercial</th>
+              <th className="rut-cliente">RUT Cliente</th>
+              <th className="razon-social">Razón Social</th>
+              <th className="fecha-fin-cto">Fecha Fin Cto</th>
+              <th className="tramo-renta">Tramo Renta</th>
+              <th className="fecha-inicio-actividades">Fecha Inicio Actividades</th>
+              <th className="fecha-termino-giro">Fecha Término Giro</th>
+              <th className="tramo-capital-propio-positivo">Tramo Capital Propio Positivo</th>
+              <th className="tramo-capital-propio-negativo">Tramo Capital Propio Negativo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data === null ? (
               <tr>
-                <th className="ano-comercial">Año Comercial</th>
-                <th className="rut-cliente">RUT Cliente</th>
-                <th className="razon-social">Razón Social</th>
-                <th className="fecha-fin-cto">Fecha Fin Cto</th>
-                <th className="tramo-renta">Tramo Renta</th>
-                <th className="fecha-inicio-actividades">Fecha Inicio Actividades</th>
-                <th className="fecha-termino-giro">Fecha Término Giro</th>
-                <th className="tramo-capital-propio-positivo">Tramo Capital Propio Positivo</th>
-                <th className="tramo-capital-propio-negativo">Tramo Capital Propio Negativo</th>
+                <td colSpan="9" style={{ textAlign: "center", color: "orange" }}>
+                  
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => (
+            ) : (
+              data.map((item, index) => (
                 <tr key={index}>
                   <td>{item.ano_comercial}</td>
                   <td>{item.cliente_rut}</td>
@@ -83,11 +87,11 @@ const SearchRut = () => {
                   <td>{item.tramo_capital_propio_positivo}</td>
                   <td>{item.tramo_capital_propio_negativo}</td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
