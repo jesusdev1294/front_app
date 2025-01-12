@@ -1,35 +1,105 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  input {
-    padding: 8px;
-    font-size: 16px;
-    margin-right: 10px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-  
-  table, th, td {
-    border: 1px solid black;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  padding-top: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+  margin-top: 10px;
+}
+
+.search-button {
+  background-color: #009DE2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.reset-button {
+  background-color: orange;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 300px;
+  background-color: #E9E9E9; /* Fondo del input */
+  border: 1px solid #ccc; /* Borde del input */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+.table-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+th.ano-comercial {
+  width: 5%;
+}
+
+th.rut-cliente {
+  width: 10%;
+}
+
+th.razon-social {
+  width: 20%;
+}
+
+th.fecha-fin-cto {
+  width: 8%;
+}
+
+th.tramo-renta {
+  width: 16%;
+}
+
+th.fecha-inicio-actividades {
+  width: 8%;
+}
+
+th.fecha-termino-giro {
+  width: 8%;
+}
+
+th.tramo-capital-propio-positivo {
+  width: 13%;
+}
+
+th.tramo-capital-propio-negativo {
+  width: 12%;
+}

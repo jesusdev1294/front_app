@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SearchRut.css"; // Importa el archivo CSS
 
 const SearchRut = () => {
   const [rut, setRut] = useState("");
@@ -36,91 +37,56 @@ const SearchRut = () => {
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
+    <div className="container">
       <h2>Búsqueda por RUT</h2>
-      <div style={{ marginBottom: "10px" }}>
+      <div>
         <input
           type="text"
           placeholder="Ingresa el RUT"
           value={rut}
           onChange={(e) => setRut(e.target.value)}
-          style={{
-            padding: "10px",
-            width: "calc(100% - 22px)",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
         />
       </div>
-      <button
-        onClick={handleSearch}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#007BFF",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-          marginRight: "10px", // Espacio entre los botones
-        }}
-      >
-        Buscar
-      </button>
-      <button
-        onClick={handleReset}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#FF5733",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
-      >
-        Reset
-      </button>
+      <div className="button-container">
+        <button className="search-button" onClick={handleSearch}>Buscar</button>
+        <button className="reset-button" onClick={handleReset}>Limpiar</button>
+      </div>
       {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
       {data === null ? null : data.length === 0 ? (
         <p style={{ color: "orange", marginTop: "10px" }}>No se encontraron resultados para este RUT.</p>
       ) : (
-        <table
-          style={{
-            width: "100%",
-            marginTop: "20px",
-            borderCollapse: "collapse",
-            textAlign: "left",
-          }}
-        >
-          <thead>
-            <tr>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Año Comercial</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>RUT Cliente</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Razón Social</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Fecha Fin Cto</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Tramo Renta</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Fecha Inicio Actividades</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Fecha Término Giro</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Tramo Capital Propio Positivo</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Tramo Capital Propio Negativo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Iteramos sobre el array de resultados */}
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.ano_comercial}</td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.cliente_rut}</td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.razon_social}</td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.fecha_fin_cto}</td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.tramo_renta}</td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.fecha_inicio_actividades_vigente}</td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.fecha_termino_giro}</td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.tramo_capital_propio_positivo}</td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.tramo_capital_propio_negativo}</td>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th className="ano-comercial">Año Comercial</th>
+                <th className="rut-cliente">RUT Cliente</th>
+                <th className="razon-social">Razón Social</th>
+                <th className="fecha-fin-cto">Fecha Fin Cto</th>
+                <th className="tramo-renta">Tramo Renta</th>
+                <th className="fecha-inicio-actividades">Fecha Inicio Actividades</th>
+                <th className="fecha-termino-giro">Fecha Término Giro</th>
+                <th className="tramo-capital-propio-positivo">Tramo Capital Propio Positivo</th>
+                <th className="tramo-capital-propio-negativo">Tramo Capital Propio Negativo</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.ano_comercial}</td>
+                  <td>{item.cliente_rut}</td>
+                  <td>{item.razon_social}</td>
+                  <td>{item.fecha_fin_cto}</td>
+                  <td>{item.tramo_renta}</td>
+                  <td>{item.fecha_inicio_actividades_vigente}</td>
+                  <td>{item.fecha_termino_giro}</td>
+                  <td>{item.tramo_capital_propio_positivo}</td>
+                  <td>{item.tramo_capital_propio_negativo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
