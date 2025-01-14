@@ -59,7 +59,7 @@ const SearchRut = () => {
               <th className="ano-comercial">Año Comercial</th>
               <th className="rut-cliente">RUT Cliente</th>
               <th className="razon-social">Razón Social</th>
-              <th className="fecha-fin-cto">Fecha Fin Cto Lof</th>
+              <th className="fecha-fin-cto">Fecha Fin Cto. Lof</th>
               <th className="tramo-renta">Tramo Renta</th>
               <th className="fecha-inicio-actividades">Fecha Inicio Actividades</th>
               <th className="fecha-termino-giro">Fecha Término Giro</th>
