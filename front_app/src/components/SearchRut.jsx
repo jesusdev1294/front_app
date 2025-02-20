@@ -38,11 +38,12 @@ const SearchRut = () => {
 
   return (
     <div className="container">
-      <h2>Búsqueda por RUT</h2>
+      <h2>Búsqueda de Empresas</h2>
+      <h3>Ingrese un RUT o una palabra que contenga en el nombre</h3>
       <div>
         <input
           type="text"
-          placeholder="Ingresa el RUT"
+          placeholder="RUT 1111111-1 ó texto del nombre"
           value={rut}
           onChange={(e) => setRut(e.target.value)}
         />
