@@ -103,3 +103,10 @@ th.tramo-capital-propio-positivo {
 th.tramo-capital-propio-negativo {
   width: 12%;
 }
+
+.spinner {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+}

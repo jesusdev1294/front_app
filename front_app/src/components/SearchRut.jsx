@@ -5,6 +5,7 @@ const SearchRut = () => {
   const [rut, setRut] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); 
 
   const handleSearch = async () => {
     if (!rut) {
@@ -12,6 +13,7 @@ const SearchRut = () => {
       return;
     }
     setError("");
+    setLoading(true); 
 
     try {
       const response = await fetch(`https://5ejrdzjpsd.execute-api.us-east-1.amazonaws.com/dev/lof/${rut}`);
@@ -27,13 +29,15 @@ const SearchRut = () => {
     } catch (err) {
       setError("Error al buscar el RUT. Por favor, verifica la API.");
       setData(null);
+    } finally {
+      setLoading(false); 
     }
   };
 
   const handleReset = () => {
-    setRut("");     // Limpiar el campo de texto
-    setData(null);  // Limpiar los datos
-    setError("");   // Limpiar el error
+    setRut("");     
+    setData(null);  
+    setError("");   
   };
 
   return (
@@ -53,6 +57,7 @@ const SearchRut = () => {
         <button className="reset-button" onClick={handleReset}>Limpiar</button>
       </div>
       {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+      {loading && <div className="spinner">Cargando...</div>} {/* Spinner */}
       <div className="table-container">
         <table>
           <thead>
