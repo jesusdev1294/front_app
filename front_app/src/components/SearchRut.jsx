@@ -16,7 +16,7 @@ const SearchRut = () => {
     setLoading(true); 
 
     try {
-      const response = await fetch(`https://5ejrdzjpsd.execute-api.us-east-1.amazonaws.com/dev/lof/${rut}`);
+      const response = await fetch(`https://crybr49nj4.execute-api.us-east-1.amazonaws.com/dev/lof/${rut}`);
       if (!response.ok) {
         throw new Error("No se pudo obtener la información.");
       }
@@ -27,7 +27,7 @@ const SearchRut = () => {
         setData(result.results);  // Guardamos los datos dentro de 'results'
       }
     } catch (err) {
-      setError("Error al buscar el RUT. Por favor, verifica la API.");
+      setError("Error en el RUT o caracteres no permitidos.");
       setData(null);
     } finally {
       setLoading(false); 
@@ -57,7 +57,7 @@ const SearchRut = () => {
         <button className="reset-button" onClick={handleReset}>Limpiar</button>
       </div>
       {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-      {loading && <div className="spinner">Cargando...</div>} {/* Spinner */}
+      {loading && <div className="spinner">Buscando, por favor espere...</div>} {/* Spinner */}
       <div className="table-container">
         <table>
           <thead>
